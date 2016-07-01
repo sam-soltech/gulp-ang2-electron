@@ -10,9 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var electron_1 = require('electron');
+var Hero = (function () {
+    function Hero() {
+    }
+    return Hero;
+}());
+exports.Hero = Hero;
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Angular App SetUp';
+        this.title = 'Angular App Setup';
         this.testIcp = function () {
             console.log(electron_1.ipcRenderer.sendSync('sendSomething', 'ping'));
         };
@@ -27,4 +33,3 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map

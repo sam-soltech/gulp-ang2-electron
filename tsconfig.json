@@ -10,8 +10,7 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true
   },
-  "files": [
-    "app/main.ts",
-    "app/app.component.ts"
-  ]
+  "exclude": [
+   "node_modules"
+ ]
 }

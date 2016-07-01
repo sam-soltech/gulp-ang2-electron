@@ -11,6 +11,7 @@
     <script> require("./node_modules/reflect-metadata/Reflect.js")</script>
     <script> require("./node_modules/systemjs/dist/system.src.js")</script>
     <script> require("./systemjs.config.js")</script>
+    <link rel="stylesheet" href="./public/css/global.css">
     <script>
       System.import('app').catch(function(err){ console.error(err); });
       System.set('electron', System.newModule(require('electron')));

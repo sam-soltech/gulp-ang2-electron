@@ -1,7 +1,7 @@
-/// <binding BeforeBuild='prod-build' ProjectOpened='default' />
+
 var gulp        = require('gulp');
-// var sass        = require('gulp-sass');
-// var jade        = require('gulp-jade');
+var sass        = require('gulp-sass');
+var jade        = require('gulp-jade');
 var ts          = require('gulp-typescript');
 var electron = require('electron-connect').server.create();
 
@@ -12,7 +12,7 @@ var startpaths = {
   electron: './main.js',
   js: './app/*.ts',
   scss: './frontend/scss/**/*.scss',
-  assets: './frontend/assets/**/*'
+  templates: './frontend/views/**/*.jade'
 }
 
 var endpaths = {
@@ -22,53 +22,46 @@ var endpaths = {
   assets: './public/assets/'
 }
 
-gulp.task('typeScript', function () {
-  return gulp.src('./app/**/*.ts')
-    .pipe(ts({
-      "target": "es5",
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "sourceMap": true,
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "removeComments": false,
-      "noImplicitAny": true,
-      "suppressImplicitAnyIndexErrors": true
-    }))
-    .pipe(gulp.dest('./app'));
+gulp.task('typescript', function () {
+  var tsProject = ts.createProject('./tsconfig.json');
+  var tsc = tsProject.src().pipe(ts({
+    "experimentalDecorators": true
+  }))
+  return tsc;
 });
 
 
-// gulp.task('sass', function () {
-//   return gulp.src(startpaths.scss)
-//     .pipe(sourcemaps.init())
-//   .pipe(sass({
-//     style: 'expanded',
-//   }))
-//   .pipe(sourcemaps.write('.'))
-//   .pipe(gulp.dest(prod.css))
-// });
+gulp.task('sass', function () {
+  return gulp.src(startpaths.scss)
+  .pipe(sass({
+    style: 'expanded',
+  }))
+  .pipe(gulp.dest(endpaths.css))
+});
 //
-// gulp.task('templates', function () {
-//   return gulp.src(startpaths.templates)
-//   .pipe(jade({
-//     pretty:true
-//   }))
-//   .pipe(gulp.dest(prod.html))
-// });
+gulp.task('templates', function () {
+  return gulp.src(startpaths.templates)
+  .pipe(jade({
+    pretty:true
+  }))
+  .pipe(gulp.dest(endpaths.html))
+});
+
+gulp.task('reload', function () {
+  electron.reload()
+});
 
 
-// gulp.task('default', ['sass','typeScript','prod-templates'], function () {
-//     gulp.watch(startpaths.scss, ['prod-build']);
-//     gulp.watch(startpaths.jsWatch, ['prod-build']);
-//     gulp.watch(startpaths.templates,['prod-build']);
-// });
+gulp.task('restart', function () {
+  electron.restart()
+});
 
-gulp.task('default', function () {
-  electron.start();
+gulp.task('default',['sass','typescript'], function () {
+
+   electron.start();
   // Restart browser process
-   gulp.watch(startpaths.electron, electron.restart);
-
+   gulp.watch(startpaths.electron, ['restart']);
    // Reload renderer process
-   gulp.watch([startpaths.js, 'index.html'], electron.reload);
+   gulp.watch([startpaths.scss],['sass','reload']);
+   gulp.watch([startpaths.js, 'index.html'], ['typescript','reload']);
 });
