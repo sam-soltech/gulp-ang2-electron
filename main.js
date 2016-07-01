@@ -10,13 +10,14 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({fullscreen:true})
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`)
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
+  mainWindow.maximize()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -48,3 +49,8 @@ app.on('activate', function () {
     createWindow()
   }
 })
+
+const ipcMain = require('electron').ipcMain;
+ipcMain.on('sendSomething', function(event, arg) {
+  event.returnValue = 'something else';
+});

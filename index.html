@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Electron Angular 2 App</title>
     <base href=".">
     <script>require('electron-connect').client.create()</script>
     <!-- Polyfill(s) for older browsers -->
@@ -13,10 +13,10 @@
     <script> require("./systemjs.config.js")</script>
     <script>
       System.import('app').catch(function(err){ console.error(err); });
+      System.set('electron', System.newModule(require('electron')));
     </script>
   </head>
   <body>
-    <h1>Hello World Yea</h1>
     <my-app>Loading...</my-app>
   </body>
 

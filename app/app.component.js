@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var electron_1 = require('electron');
 var Hero = (function () {
     function Hero() {
     }
@@ -17,19 +18,19 @@ var Hero = (function () {
 exports.Hero = Hero;
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Tour of Heroes';
-        this.hero = {
-            id: 1,
-            name: 'Windstorm'
+        this.title = 'Angular App Setup';
+        this.testIcp = function () {
+            console.log(electron_1.ipcRenderer.sendSync('sendSomething', 'ping'));
         };
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <h2>{{hero.name}} details!</h2>\n    <div><label>id: </label>{{hero.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"hero.name\" placeholder=\"name\">\n    </div>\n    "
+            template: "\n    <h2>{{title}}</h2>\n    <button (click)=\"testIcp()\">Test</button>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
+//# sourceMappingURL=app.component.js.map
