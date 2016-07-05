@@ -20,7 +20,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <h2>{{title}}</h2>\n    <button (click)=\"testIcp()\">Test</button>\n    "
+            template: "\n    <h2>{{title}}</h2>\n    <button (click)=\"testIcp()\">Test</button>\n    <router-outlet></router-outlet>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

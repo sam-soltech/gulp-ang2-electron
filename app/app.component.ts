@@ -6,6 +6,7 @@ import { remote, ipcRenderer } from 'electron';
   template:`
     <h2>{{title}}</h2>
     <button (click)="testIcp()">Test</button>
+    <router-outlet></router-outlet>
     `
 })
 export class AppComponent {

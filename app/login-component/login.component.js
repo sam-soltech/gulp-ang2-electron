@@ -9,27 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var electron_1 = require('electron');
-var Hero = (function () {
-    function Hero() {
+var LoginComponent = (function () {
+    function LoginComponent() {
     }
-    return Hero;
-}());
-exports.Hero = Hero;
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Angular App Setup';
-        this.testIcp = function () {
-            console.log(electron_1.ipcRenderer.sendSync('sendSomething', 'ping'));
-        };
-    }
-    AppComponent = __decorate([
+    LoginComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n    <h2>{{title}}</h2>\n    <button (click)=\"testIcp()\">Test</button>\n    "
+            selector: 'login',
+            template: "\n    <h2>Login</h2>\n    "
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], LoginComponent);
+    return LoginComponent;
 }());
-exports.AppComponent = AppComponent;
+exports.LoginComponent = LoginComponent;
+//# sourceMappingURL=login.component.js.map

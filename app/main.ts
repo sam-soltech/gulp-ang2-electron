@@ -1,5 +1,8 @@
 import {bootstrap}    from '@angular/platform-browser-dynamic';
-// import { ROUTER_DIRECTIVES } from '@angular/router';
+import { APP_ROUTER_PROVIDERS } from './app.routes';
 import {AppComponent} from './app.component';
 
-bootstrap(AppComponent);
+bootstrap(AppComponent, [
+  APP_ROUTER_PROVIDERS
+])
+.catch(err => console.error(err));
