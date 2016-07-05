@@ -17,7 +17,7 @@ var startpaths = {
 
 var endpaths = {
   js: './public/js/',
-  html:'./public/',
+  html:'./public/views/',
   css: './public/css/',
   assets: './public/assets/'
 }
@@ -56,12 +56,13 @@ gulp.task('restart', function () {
   electron.restart()
 });
 
-gulp.task('default',['sass','typescript'], function () {
+gulp.task('default',['sass','templates','typescript'], function () {
 
    electron.start();
   // Restart browser process
    gulp.watch(startpaths.electron, ['restart']);
    // Reload renderer process
+   gulp.watch([startpaths.templates],['templates','reload']);
    gulp.watch([startpaths.scss],['sass','reload']);
    gulp.watch([startpaths.js, 'index.html'], ['typescript','reload']);
 });
