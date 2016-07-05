@@ -22,7 +22,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             directives: [router_1.ROUTER_DIRECTIVES],
-            template: "\n    <h2>{{title}}</h2>\n    <button (click)=\"testIcp()\">Test</button>\n    <router-outlet></router-outlet>\n    "
+            template: "\n    <router-outlet></router-outlet>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

@@ -6,8 +6,6 @@ import { remote, ipcRenderer } from 'electron';
   selector: 'my-app',
   directives: [ROUTER_DIRECTIVES],
   template:`
-    <h2>{{title}}</h2>
-    <button (click)="testIcp()">Test</button>
     <router-outlet></router-outlet>
     `
 })

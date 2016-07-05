@@ -1,0 +1,17 @@
+.ui.middle.aligned.center.aligned.grid
+  .column.login-page
+    img(src="./public/assets/Soltech-logo-black.png").image
+    
+    form.ui.large.form((ngSubmit)="onSubmit()")
+      .ui.segment
+        h4.ui.dividing.header.aligned.left Log-In
+        .field
+          .ui.left.icon.input
+            i.user.icon
+            input(type='text', name='email', placeholder='Username',[(ngModel)]='user.username')
+        .field
+          .ui.left.icon.input
+            i.lock.icon
+            input(type='password', name='password', placeholder='Password',[(ngModel)]='user.password')
+        button(type="submit").ui.fluid.large.teal.submit.button Login
+      .ui.error.message

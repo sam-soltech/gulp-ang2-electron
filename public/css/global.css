@@ -1,2 +1,6 @@
 body {
   background-color: #CCC; }
+
+.login-page {
+  max-width: 700px;
+  margin-top: 150px; }

@@ -9,15 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var models_1 = require('../models');
+var router_1 = require('@angular/router');
 var LoginComponent = (function () {
-    function LoginComponent() {
+    function LoginComponent(router) {
+        var _this = this;
+        this.router = router;
+        this.onSubmit = function () {
+            console.log(_this.user);
+        };
+        this.user = new models_1.User;
     }
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login',
-            template: "\n    <h2>Login</h2>\n    "
+            templateUrl: "./public/views/login.componet.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], LoginComponent);
     return LoginComponent;
 }());
