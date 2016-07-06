@@ -5,4 +5,3 @@ var User = (function () {
     return User;
 }());
 exports.User = User;
-//# sourceMappingURL=models.js.map

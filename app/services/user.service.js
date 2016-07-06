@@ -9,20 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Angular App SetUp';
+var electron_1 = require('electron');
+var UserService = (function () {
+    function UserService() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            directives: [router_1.ROUTER_DIRECTIVES],
-            template: "\n    <router-outlet></router-outlet>\n    "
-        }), 
+    UserService.prototype.getUser = function (user) {
+        electron_1.ipcRenderer.send('getUser', user);
+        return new Promise(function (resolve, reject) {
+            electron_1.ipcRenderer.once('user-reply', function (event, arg) {
+                resolve(arg);
+            });
+        });
+    };
+    UserService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], UserService);
+    return UserService;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.UserService = UserService;
+//# sourceMappingURL=user.service.js.map

@@ -1,22 +1,25 @@
 
-<div class="ui middle aligned center aligned grid">
-  <div class="column login-page"><img src="./public/assets/Soltech-logo-black.png" class="image"/>
-    <form (ngSubmit)="onSubmit()" class="ui large form">
-      <div class="ui segment">
+<div class="ui middle aligned centered aligned grid login-page">
+  <div class="column login-container"><img src="./public/assets/Soltech-logo-black.png" class="image"/>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="ui large form">
+      <div class="ui segment aligned left">
         <h4 class="ui dividing header aligned left">Log-In</h4>
         <div class="field">
           <div class="ui left icon input"><i class="user icon"></i>
-            <input type="text" name="email" placeholder="Username" [(ngModel)]="user.username"/>
+            <input type="text" placeholder="Username" required="required" name="username" [(ngModel)]="user.username"/>
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input"><i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password" [(ngModel)]="user.password"/>
+            <input type="password" placeholder="Password" required="required" name="password" [(ngModel)]="user.password"/>
           </div>
         </div>
-        <button type="submit" class="ui fluid large teal submit button">Login</button>
+        <div [ngClass]="{ visible: invlaidUser}" class="ui error message">
+          <div class="header">Invalid Username & Password</div>
+          <p>Please Try again or request a reset</p>
+        </div>
+        <button type="submit" [disabled]="!loginForm.form.valid" class="ui fluid large teal submit button">Login</button>
       </div>
-      <div class="ui error message"></div>
     </form>
   </div>
 </div>

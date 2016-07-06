@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <title>Electron Angular 2 App</title>
     <base href=".">
-
     <!-- Polyfill(s) for older browsers -->
-    <script> require('electron-connect').client.create() </script> 
     <script> require("./node_modules/core-js/client/shim.min.js")</script>
     <script> require("./node_modules/zone.js/dist/zone.js")</script>
     <script> require("./node_modules/reflect-metadata/Reflect.js")</script>
     <script> require("./node_modules/systemjs/dist/system.src.js")</script>
-    <script> require("./node_modules/jquery/dist/jquery.min.js")</script>
+    <script> window.$ = window.jQuery = require("./node_modules/jquery/dist/jquery.min.js")</script>
     <script> require("./node_modules/semantic-ui/dist/semantic.min.js")</script>
     <script> require("./systemjs.config.js")</script>
     <link type="text/css" rel="stylesheet" href="./node_modules/semantic-ui/dist/semantic.min.css">
@@ -22,8 +20,15 @@
     </script>
     <!-- -->
   </head>
-  <body>
-    <my-app>Loading...</my-app>
+  <body class="pushable">
+    <my-app>
+      <div class="ui grid">
+        <div class="ui active inverted dimmer">
+          <div class="ui massive text loader">Loading</div>
+        </div>
+      </div>
+    </my-app>
+
   </body>
 
 

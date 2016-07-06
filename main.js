@@ -1,4 +1,5 @@
 const electron = require('electron')
+const fs = require('fs');
 var client = require('electron-connect').client;
 // Module to control application life.
 const app = electron.app
@@ -12,7 +13,7 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({fullscreen:false})
-
+  client.create(mainWindow);
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`)
 
@@ -28,7 +29,7 @@ function createWindow () {
     mainWindow = null
   })
 
-  client.create(mainWindow);
+
 }
 
 // This method will be called when Electron has finished
@@ -54,6 +55,15 @@ app.on('activate', function () {
 })
 
 const ipcMain = require('electron').ipcMain;
-ipcMain.on('sendSomething', function(event, arg) {
-  event.returnValue = 'something else';
+
+
+ipcMain.on('getUser', function(event, submited) {
+  console.log(submited)
+  var users = JSON.parse(fs.readFileSync('./public/data/users.json', 'utf8'));
+  user = users.filter(function(user){
+    if(user.username == submited.username && user.password == submited.password){
+      return user;
+    }
+  })[0]
+  event.sender.send('user-reply', user);
 });

@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { remote, ipcRenderer } from 'electron';
+
+
+
 
 @Component({
   selector: 'my-app',
@@ -11,7 +13,7 @@ import { remote, ipcRenderer } from 'electron';
 })
 export class AppComponent {
   title = 'Angular App SetUp';
-  testIcp = () => {
-    console.log(ipcRenderer.sendSync('sendSomething', 'ping'));
-  }
+  // testIcp = () => {
+  //   console.log(ipcRenderer.sendSync('sendSomething', 'ping'));
+  // }
 }

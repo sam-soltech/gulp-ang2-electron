@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "guid": "63faa34f-7b7b-4bdd-bace-2df50da08e79",
+    "isActive": true,
+    "name": "Robinson Holt",
+    "username": "admin",
+    "password": 123,
+    "email": "bethholt@comvey.com"
+  },
+  {
+    "id": "2",
+    "guid": "3e917701-0fa9-4565-b9d3-1a23e6badf76",
+    "isActive": false,
+    "name": "Nancy Terrell",
+    "username": "client",
+    "password": 123,
+    "email": "jessicaterrell@comvey.com"
+  },
+  {
+    "id": "3",
+    "guid": "488c386e-343c-4c44-b4b3-0c491504d3ae",
+    "isActive": true,
+    "name": "Galloway Harmon",
+    "username": "user",
+    "password": 123,
+    "email": "lynetteharmon@comvey.com"
+  }
+]

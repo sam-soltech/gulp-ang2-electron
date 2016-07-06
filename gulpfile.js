@@ -10,13 +10,13 @@ var electron = require('electron-connect').server.create();
 
 var startpaths = {
   electron: './main.js',
-  js: './app/*.ts',
+  js: './app/**/*.ts',
   scss: './frontend/scss/**/*.scss',
   templates: './frontend/views/**/*.jade'
 }
 
 var endpaths = {
-  js: './public/js/',
+  js: './app/',
   html:'./public/views/',
   css: './public/css/',
   assets: './public/assets/'
@@ -30,7 +30,6 @@ gulp.task('typescript', function () {
   return tsc;
 });
 
-
 gulp.task('sass', function () {
   return gulp.src(startpaths.scss)
   .pipe(sass({
@@ -38,7 +37,8 @@ gulp.task('sass', function () {
   }))
   .pipe(gulp.dest(endpaths.css))
 });
-//
+
+
 gulp.task('templates', function () {
   return gulp.src(startpaths.templates)
   .pipe(jade({
@@ -56,9 +56,9 @@ gulp.task('restart',['sass','templates','typescript'], function () {
   electron.restart()
 });
 
-gulp.task('default',['sass','templates','typescript'], function () {
+gulp.task('default',['sass','typescript'], function () {
 
-   electron.start();
+   electron.start([], () => {})
   // Restart browser process
    gulp.watch(startpaths.electron, ['restart']);
    // Reload renderer process

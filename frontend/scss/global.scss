@@ -2,7 +2,21 @@ body {
   background-color: #CCC;
 }
 
+.page-box {
+  height: 100%;
+}
+
+
 .login-page {
-  max-width: 700px;
-  margin-top: 150px;
+  height: 100%;
+}
+
+.login-container {
+  max-width: 600px;
+  margin-top: -130px;
+
+  .error.message{
+    margin-top: 10px;
+    text-align: left!important;
+  }
 }

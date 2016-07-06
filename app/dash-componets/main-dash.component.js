@@ -9,36 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var models_1 = require('../models');
 var user_service_1 = require('../services/user.service');
 var router_1 = require('@angular/router');
-var LoginComponent = (function () {
-    function LoginComponent(router, userService) {
-        var _this = this;
+var ng_semantic_1 = require("ng-semantic");
+var DashComponent = (function () {
+    function DashComponent(router, userService) {
         this.router = router;
         this.userService = userService;
-        this.invlaidUser = false;
-        this.onSubmit = function () {
-            _this.userService.getUser(_this.user).then(function (response) {
-                if (!response) {
-                    _this.invlaidUser = true;
-                }
-                else {
-                    _this.router.navigate(['/dash']);
-                }
-            });
-        };
-        this.user = new models_1.User;
     }
-    LoginComponent = __decorate([
+    DashComponent = __decorate([
         core_1.Component({
-            selector: 'login',
-            templateUrl: "./public/views/login.componet.html",
-            providers: [user_service_1.UserService]
+            selector: 'dash-main',
+            templateUrl: "./public/views/dash.componet.html",
+            providers: [user_service_1.UserService],
+            directives: [ng_semantic_1.SEMANTIC_COMPONENTS, ng_semantic_1.SEMANTIC_DIRECTIVES],
         }), 
         __metadata('design:paramtypes', [router_1.Router, user_service_1.UserService])
-    ], LoginComponent);
-    return LoginComponent;
+    ], DashComponent);
+    return DashComponent;
 }());
-exports.LoginComponent = LoginComponent;
-//# sourceMappingURL=login.component.js.map
+exports.DashComponent = DashComponent;
+//# sourceMappingURL=main-dash.component.js.map

@@ -1,17 +1,20 @@
-.ui.middle.aligned.center.aligned.grid
-  .column.login-page
+.ui.middle.aligned.centered.aligned.grid.login-page
+  .column.login-container
     img(src="./public/assets/Soltech-logo-black.png").image
     
-    form.ui.large.form((ngSubmit)="onSubmit()")
-      .ui.segment
+    form.ui.large.form((ngSubmit)="onSubmit()",#loginForm="ngForm")
+      .ui.segment.aligned.left
         h4.ui.dividing.header.aligned.left Log-In
         .field
           .ui.left.icon.input
             i.user.icon
-            input(type='text', name='email', placeholder='Username',[(ngModel)]='user.username')
+            input(type='text', placeholder='Username',required, name="username",[(ngModel)]='user.username')
         .field
           .ui.left.icon.input
             i.lock.icon
-            input(type='password', name='password', placeholder='Password',[(ngModel)]='user.password')
-        button(type="submit").ui.fluid.large.teal.submit.button Login
-      .ui.error.message
+            input(type='password', placeholder='Password',required,name="password",[(ngModel)]='user.password')
+        .ui.error.message([ngClass]="{ visible: invlaidUser}")
+          .header Invalid Username & Password
+          p Please Try again or request a reset
+        button(type="submit", [disabled]="!loginForm.form.valid").ui.fluid.large.teal.submit.button Login
+      
