@@ -13,3 +13,10 @@ body {
   .login-container .error.message {
     margin-top: 10px;
     text-align: left !important; }
+
+.main-dash {
+  height: 100%; }
+
+.page-scroll {
+  max-height: 100%;
+  overflow-y: auto; }

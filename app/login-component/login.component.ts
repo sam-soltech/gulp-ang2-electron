@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { remote, ipcRenderer } from 'electron';
 import { User } from '../models';
 import { UserService } from '../services/user.service';
@@ -11,15 +11,19 @@ import { NgForm }    from '@angular/common';
    providers: [UserService]
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   user:User;
   invlaidUser:boolean = false;
   constructor(
     private router: Router,
     private userService: UserService
   ){
-    this.user = new User;
+
 	}
+
+  ngOnInit(){
+    this.user = new User;
+  }
 
   onSubmit = () => {
     this.userService.getUser(this.user).then((response) => {

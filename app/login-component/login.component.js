@@ -28,8 +28,10 @@ var LoginComponent = (function () {
                 }
             });
         };
-        this.user = new models_1.User;
     }
+    LoginComponent.prototype.ngOnInit = function () {
+        this.user = new models_1.User;
+    };
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login',

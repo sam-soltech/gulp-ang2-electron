@@ -1,14 +1,21 @@
-<sm-sidebar class="left vertical inverted sidebar labeled icon menu" #invertedSidebar>
-    <a class="item">
-         Home
-    </a>
-    <a class="item">
-         Topics
-    </a>
-    <a class="item">
-         Friends
-    </a>
-</sm-sidebar>
-<div class='pusher'>
-  <sm-button class="positive" (click)="invertedSidebar.show({transition: 'push'})">Lunch left sidebar</sm-button>
+
+<div class="ui main-dash">
+  <div class="ui top attached demo menu inverted"><a (click)="showSidebar()" class="item"><i class="sidebar icon"></i>    Menu</a></div>
+  <div class="ui bottom attached segment pushable">
+    <div [ngClass]="{visible: sideBarVisable, uncover: sideBarVisable}" class="ui inverted labeled left inline vertical sidebar menu thin"><a class="item"><i class="home icon"></i>      Home</a><a class="item"><i class="block layout icon"></i>      Topics</a><a class="item"><i class="smile icon"></i>      Friends</a><a class="item"><i class="calendar icon"></i>      History</a></div>
+    <div class="pusher">
+      <div class="ui basic segment page-scroll">
+        <h3 class="ui header">Application Content</h3>
+        <div class="ui link cards">
+          <div *ngFor="let post of posts" class="card">
+            <div class="image"><img *ngIf="post.data.preview" src="{{post.data.preview.images[0].source.url}}"/></div>
+            <div class="content">
+              <div class="meta">{{post.data.author}}</div>
+              <div class="description">{{post.data.title}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

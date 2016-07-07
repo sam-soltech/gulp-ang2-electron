@@ -1,10 +1,29 @@
-sm-sidebar.left.vertical.inverted.sidebar.labeled.icon.menu(#invertedsidebar='')
-  a.item
-    | Home
-  a.item
-    | Topics
-  a.item
-    | Friends
-
-.pusher
-  sm-button.positive((click)="invertedSidebar.show({transition: 'overlay'})") Lunch left sidebar
+.ui.main-dash
+  .ui.top.attached.demo.menu.inverted
+    a.item((click)="showSidebar()")
+      i.sidebar.icon
+      |     Menu
+  .ui.bottom.attached.segment.pushable
+    .ui.inverted.labeled.left.inline.vertical.sidebar.menu.thin([ngClass]="{visible: sideBarVisable, uncover: sideBarVisable}")
+      a.item
+        i.home.icon
+        |       Home
+      a.item
+        i.block.layout.icon
+        |       Topics
+      a.item
+        i.smile.icon
+        |       Friends
+      a.item
+        i.calendar.icon
+        |       History
+    .pusher
+      .ui.basic.segment.page-scroll
+        h3.ui.header Application Content
+        .ui.link.cards
+          .card(*ngFor="let post of posts")
+            .image
+              img(*ngIf="post.data.preview",src="{{post.data.preview.images[0].source.url}}")
+            .content
+              .meta {{post.data.author}}
+              .description {{post.data.title}}
